@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- BOOTSTRAP STYLES-->
+    <link href="static/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="static/assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="static/assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="static/assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMh5a8D+SK2L0D6N10kXPSM1JUM6ZxH9HkUjD9" crossorigin="anonymous">
+    <link href='static/http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMh5a8D+SK2L0D6N10kXPSM1JUM6ZxH9HkUjD9" crossorigin="anonymous">
+    <style>
+        .inner-text {
+            text-align: center;             /* Center text */
+            margin: 20px;                  /* Add margin around the div */
+        }
+    
+        .inner-text strong {
+            font-size: 24px;               /* Increase font size for the name */
+            color: #ffffff;                /* Set font color for better visibility */
+        }
+    
+        .inner-text small strong {
+            font-size: 18px;               /* Smaller font size for the affinity text */
+            color: #7bcaee;                /* Lighter color for less emphasis */
+        }
+
+        /* Table Styles */
+        #officerTable {
+            width: 100%;                   /* Make table full width */
+            margin: 20px 0;               /* Add margin around the table */
+            border-collapse: collapse;     /* Collapse borders for a cleaner look */
+            background-color: #f8f9fa;     /* Light background color */
+        }
+
+        #officerTable th {
+            background-color: #007bff;     /* Bootstrap primary color */
+            color: white;                   /* White text for the header */
+            padding: 12px;                  /* Padding for table headers */
+            text-align: left;               /* Align header text to the left */
+        }
+
+        #officerTable td {
+            padding: 10px;                  /* Padding for table cells */
+            border: 1px solid #dee2e6;      /* Light grey border */
+            color: #495057;                 /* Dark grey text for cells */
+        }
+
+        #officerTable tr:hover {
+            background-color: #e9ecef;      /* Light grey background on hover */
+        }
+
+        #officerTable tr:nth-child(even) {
+            background-color: #f2f2f2;      /* Alternate row color */
+        }
+
+        #officerTable tr:nth-child(odd) {
+            background-color: white;         /* Default row color */
+        }
+
+        /* Responsive padding */
+        .table-responsive {
+            padding: 0 15px;               /* Add left and right padding */
+        }
+    </style>
+    <script>
+        // Function to filter table based on search input
+        function searchTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("officerTable");
+            const rows = table.getElementsByTagName("tr");
+
+            // Loop through all table rows (except the first, which is the header)
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let rowVisible = false;
+
+                // Check if any cell in the row contains the search term
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].textContent.toLowerCase().includes(filter)) {
+                        rowVisible = true;
+                        break;
+                    }
+                }
+
+                // Show or hide the row based on the search term
+                rows[i].style.display = rowVisible ? "" : "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="admindashboard">Admin</a>
+            </div>
+
+            <div class="header-right">
+                <a class="nav-link" href="{% url 'log_out' %}" style="color: white; font-size: 20px;">Logout</a>
+            </div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="inner-text">
+                            <strong>Predicting</strong>
+                            <br />
+                            <small><strong>Programming Success</strong></small>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="admindashboard" style="font-size: 15px; line-height: 1.5;">
+                            <i class="fa fa-dashboard" style="font-size: 22px; margin-right: 8px;"></i>Dashboard
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><h1 class="page-head-line">User Records</h1></center>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <!-- Search input -->
+                        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for names, emails..." class="form-control mb-3" style="width: 300px; padding: 10px 5px; margin: 10px auto;"/>
+                    
+                        <table class="table table-bordered table-striped" id="officerTable">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email ID</th>
+                                    <th>Action</th> <!-- New header for Action column -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                    {% if user.username != "admin" and user.username != "user" %}
+                                    <tr>
+                                        <td>{{ user.first_name }}</td>
+                                        <td>{{ user.last_name }}</td>
+                                        <td>{{ user.username }}</td>
+                                        <td>
+                                            <a href="{% url 'delete_user' user.id %}" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                <button class="btn btn-danger">Delete</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4">No records found.</td> <!-- Adjust colspan to 4 -->
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="static/assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="static/assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="static/assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="static/assets/js/custom.js"></script>
+
+    <!-- SweetAlert -->
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ {% for message in messages %}
+ {% if message.tags == 'success' %}
+ <script>
+     var m = "{{ message }}"
+     swal("Success!", m, 'success');
+ </script>
+ {% elif message.tags == 'danger' %}
+ <script>
+     var m = "{{ message }}"
+     swal("Error!", m, 'error');
+ </script>
+ {% elif message.tags == 'info' %}
+ <script>
+     var m = "{{ message }}"
+     swal(m, "Take care of yourself!!!", 'info');
+ </script>
+ {% endif %}
+ {% endfor %}
+</body>
+</html>
+
+

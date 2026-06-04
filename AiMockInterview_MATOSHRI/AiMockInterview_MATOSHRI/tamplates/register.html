@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-xl-4 col-lg-7 wow slideInUp m-auto" data-wow-delay="0.3s">
+                <div class="section-title mt-5">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">Register Here</h5>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <input type="text" id="fname" name="fname" class="form-control border-0 bg-light px-4" placeholder="Your First Name" style="height: 55px;" required
+                            >
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="lname" name="lname" class="form-control border-0 bg-light px-4" placeholder="Your Last Name" style="height: 55px;" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="email" id="username" name="username" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="password" id="password" name="password" class="form-control border-0 bg-light px-4" placeholder="Enter Password" style="height: 55px;" required>
+                            <p id="passwordError" style="color: red;"></p>
+                        </div>
+                        <div class="col-12">
+                            <input type="password" id="cpassword" name="cpassword" class="form-control border-0 bg-light px-4" placeholder="Re-enter Password" style="height: 55px;" required>
+                        </div>
+                        <div class="col-12">
+                            <p></p>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 pb-5 mb-5"  style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="static/img/register_page.jpg" style="object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+
+        // Regular expressions to check for at least one alphabet, one number, and one special character
+        var alphabetRegex = /[a-zA-Z]/;
+        var numberRegex = /[0-9]/;
+        var specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+        var message = "";
+
+        // Check password length
+        if (password.length < 8 || password.length > 20) {
+            message += "Password must be between 8 to 20 characters.<br>";
+        }
+
+        // Check if password contains at least one alphabet, one number, and one special character
+        if (!alphabetRegex.test(password)) {
+            message += "Password must contain at least one alphabet.<br>";
+        }
+
+        if (!numberRegex.test(password)) {
+            message += "Password must contain at least one number.<br>";
+        }
+
+        if (!specialCharRegex.test(password)) {
+            message += "Password must contain at least one special character.<br>";
+        }
+
+        // Display the validation message
+        document.getElementById("passwordError").innerHTML = message;
+
+        // Return true only if there are no validation errors
+        return message === "";
+    }
+
+    // Add event listener for input event
+    document.getElementById("password").addEventListener("input", function() {
+        validatePassword();
+    });
+</script>
+
+{% endblock body%}

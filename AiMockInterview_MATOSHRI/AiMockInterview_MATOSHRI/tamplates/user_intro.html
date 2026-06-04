@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container text-center">
+    <div class="section-title mb-5">
+        <h5 class="position-relative d-inline-block text-primary text-uppercase mt-5">SELF INTRODUCTION</h5>
+    </div>
+    <div class="container">
+        <div class="row g-5 m-auto justify-content-center">
+            <div class="col-md-4 service-item wow zoomIn" data-wow-delay="0.6s">
+                <div class="position-relative bg-light rounded-bottom text-center p-4">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <h5 class="m-3">Start Recording<span class="text-danger">*</span></h5>
+                        <button id="startRecordingBtn" type="submit" class="btn btn-primary" onclick="startRecording()">Start Camera</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5 m-auto justify-content-center">
+            <div class="col-md-8 service-item wow zoomIn" data-wow-delay="0.6s">
+                <div class="container text-center my-3" id="cameraContainer" style="display: none;">
+                    <video id="recordedVideo" autoplay muted></video>
+                    <p id="timer" class="text-danger"></p> <!-- Timer to display remaining time -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to start recording
+    function startRecording() {
+        // Show the camera container
+        document.getElementById("cameraContainer").style.display = "block";
+
+        // Start the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                // Display the stream in the video element
+                document.getElementById("recordedVideo").srcObject = stream;
+
+                // Start the timer
+                startTimer(60); // 1 minute timer
+            })
+            .catch(function (err) {
+                console.error('Error accessing media devices', err);
+            });
+    }
+
+    // Function to start the timer
+    function startTimer(duration) {
+        let timer = duration;
+        let minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById("timer").innerText = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+                // Stop the camera or take appropriate action when the timer ends
+            }
+        }, 1000);
+    }
+</script>
+
+{% endblock body %}

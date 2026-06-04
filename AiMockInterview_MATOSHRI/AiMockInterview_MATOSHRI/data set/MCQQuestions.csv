@@ -1,0 +1,49 @@
+Questions,option_1,option_2,option_3,option_4,Correct_Answer,Category
+What is the maximum possible length of an identifier?,16,32,64,none of these,none of this,Python Developer
+Who developed the Python language?,Zim Den,Guido van Rossum,Niene Stom,Wick van Rossum,Guido van Rossum,Python Developer
+In which language is Python written?,english,php ,c ,all of the above ,c,Python Developer
+What do we use to define a block of code in Python language?,key,brackets ,indentations ,non of these,indentation,Python Developer
+Which of the following statements is correct regarding the object-oriented programming concept in Python?,Classes are real-world entities while objects are not real,Objects are real-world entities while classes are not real,Both objects and classes are real-world entities,All of the above,Objects are real-world entities while classes are not real,Python Developer
+What is the method inside the class in python language?,object ,function,attribute,argument,function,Python Developer
+Which of the following declarations is incorrect?,_x = 2,__x = 3,__xyz__ = 5,None of these,None of these,Python Developer
+Which of the following is not a keyword in Python language?,val ,raise ,try ,with ,val,Python Developer
+Which of the following operators is the correct option for power(ab)?,a ^ b,a**b,a ^ ^ b,a ^ * b,a**b,Python Developer
+Which one of the following has the same precedence level?,"Division, Power, Multiplication, Addition and Subtraction",Division and Multiplication,Subtraction and Division,Power and Division,Division and Multiplication,Python Developer
+Which one of the following has the highest precedence in the expression?,division, subtraction,paranthesis,power,paranthesis,Python Developer
+Which of the following functions is a built-in function in python language?,val(),print() ,a() ,none of these ,print(),Python Developer
+HTML stands for -,HighText Machine Language,HyperText and links Markup Language,HyperText Markup Language,None of these,HyperText Markup Language,Web Designing
+The correct sequence of HTML tags for starting a webpage is -,"Head, Title, HTML, body","HTML, Body, Title, Head","HTML, Head, Title, Body","HTML, Head, Title, Body","HTML, Head, Title, Body",Web Designing
+Which of the following element is responsible for making the text bold in HTML?,<pre>,<a> ,<p> ,<b> ,<b>,Web Designing
+How to create an unordered list (a list with the list items in bullets) in HTML?,<ul>,<ol> ,<li>,<i>,<ul>,Web Designing
+Which character is used to represent the closing of a tag in HTML?,/,\,!,.,/,Web Designing
+How to create a hyperlink in HTML?,"<a href = ""www.javatpoint.com""> javaTpoint.com </a>","<a url = ""www.javatpoint.com"" javaTpoint.com /a>","<a link = ""www.javatpoint.com""> javaTpoint.com </a>",<a> www.javatpoint.com <javaTpoint.com /a>,"<a href = ""www.javatpoint.com""> javaTpoint.com </a>",Web Designing
+ How to insert an image in HTML?,"<img href = ""jtp.png"" />","<img url = ""jtp.png"" />","<img link = ""jtp.png"" />","<img src = ""jtp.png"" />","<img src = ""jtp.png"" />",Web Designing
+ How to add a background color in HTML?,"<marquee bg-color = ""red"">","<marquee bg color: ""red"">","<marquee bgcolor = ""red"">","<marquee color = ""red"">","<marquee bgcolor = ""red"">",Web Designing
+<input> is -,a format tag.,an empty tag.,All of the above,None of the above,an empty tag,Web Designing
+ The <hr> tag in HTML is used for -,new line,vertical ruler,new paragraph,horizontal ruler,horizontal ruler,Web Designing
+Which of the following attribute is used to provide a unique name to an element?,class,id ,type , none of these,id,Web Designing
+Which of the following HTML tag is used to display the text with scrolling effect?,<marquee>,<scroll>,<div>,None of the above,<marquee>,Web Designing
+Which methodology is used to performed Maintenance testing?,Breadth test and depth test,Confirmation testing,Retesting,Sanity testing,Breadth test and depth test,Testing
+Which of the following is not part of the Test document?,Test Case,Requirements Traceability Matrix [RTM],Test strategy,Project Initiation Note [PIN],Project Initiation Note [PIN],Testing
+Which term is used to define testing?,Evaluating deliverable to find errors,Finding broken code,A stage of all projects,None of the above,Evaluating deliverable to find errors,Testing
+Which of the following is not a valid phase of SDLC (Software Development Life Cycle)?,Testing Phase,Requirement Phase,Deployment phase,Testing closure,Testing Closure,Testing
+Which of the following testing is also known as white-box testing?,Structural testing,Error guessing technique,Design based testing,None of the above,Structural Testing,Testing
+Which of the following testing is related to the boundary value analysis?,White box and black box testing,White-box testing,Black box testing,None of the above,Black Box testing,Testing
+Functional testing is a ------?,Test design technique,Test level,SDLC Model,Test type,Test type,Testing
+What are the different levels of Testing?,Integration testing,Unit testing,System testing,All of the above,All of the above,Testing
+Which of the following is not a part of STLC (Software Testing Life Cycle)?,Testing Planning,Requirement Gathering,Test Design,Testing closure,Requirement Gathering,Testing
+Sanity testing is a ------?,Test type,Test Execution Level,Test Level,Test design technique,Test Execution level,Testing
+White box testing techniques are?,Statement coverage testing,Decision coverage testing,Data flow testing,All of the above,All of the above,Testing
+In which environment we can performed the Alpha testing?,User's end,Developer's end,User's and developer's end,None of the above,Developer's end,Testing
+Which of the following option leads to the portability and security of Java?,Bytecode is executed by JVM,The applet makes the Java code secure and portable,Use of exception handling,Dynamic binding between objects,Bytecode is executed by the JVM.,Java Developer
+Which of the following is not a Java features?,Dynamic,Architecture Neutral,Use of pointers,Object-oriented,Use of pointers,Java Developer
+_____ is used to find and fix bugs in the Java programs.,JVM,JRE,JDK,JDB,JDB,Java Developer
+Which of the following is a valid declaration of a char?,char ch = '\utea';,char ca = 'tea';,char cr = \u0223;,char cc = '\itea';,char ch = '\utea';,Java Developer
+What is the return type of the hashCode() method in the Object class?,Object,int,long,void ,int,Java Developer
+"Evaluate the following Java expression, if x=3, y=5, and z=10: ++z + y - y + z + x++",24,23,20,25,25,Java Developer
+Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?,javap tool,javaw command,Javadoc tool,javah command,Javadoc tool,Java Developer
+Which of the following for loop declaration is not valid?,for ( int i = 99; i >= 0; i / 9 ),for ( int i = 7; i <= 77; i += 7 ),for ( int i = 20; i >= 2; - -i ),for ( int i = 2; i <= 20; i = 2* i ), for ( int i = 99; i>=0; i / 9),Java Developer
+Which method of the Class.class is used to determine the name of a class represented by the class object as a String?,getClass(),intern(),getName(), toString(),getName(),Java Developer
+"In which process, a local variable has the same name as one of the instance variables?",Serialization,Variable Shadowing,Abstraction,Multi-threading,Variable Shadowing,Java Developer
+Which of the following is true about the anonymous inner class?,It has only methods,Objects can't be created,It has a fixed class name,It has no class name,It has no class name,Java Developer
+Which package contains the Random class?,java.util package,java.lang package,java.awt package,java.io package,java.util package,Java Developer

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!-- Service Start -->
+<div class="container text-center"> <!-- Center the content within a container -->
+    <div class="section-title mb-5">
+        <h5 class="position-relative d-inline-block text-primary text-uppercase"></h5>
+    </div>
+    <div class="row g-5">
+        <div class="col-md-4 service-item wow zoomIn" data-wow-delay="0.6s">
+            <div class="rounded-top overflow-hidden" style="height: 200px; width: 300px;">
+                <img class="img-fluid" src="static/img/resume.png" alt="" style="max-height: 100%; max-width: 100%;">
+            </div>
+            <div class="position-relative bg-light rounded-bottom text-center p-4">
+                <h5 class="m-0" >Resume Upload</h5>
+                <input type="file" class="form-control" accept="application/pdf">
+                
+            </div>
+        </div>
+        <div class="col-md-4 service-item wow zoomIn" data-wow-delay="0.9s">
+            <div class="rounded-top overflow-hidden" style="height: 200px; width: 300px;">
+                <img class="img-fluid" src="static/img/video.jpg" alt="" style="max-height: 100%; max-width: 100%;">
+            </div>
+            <div class="position-relative bg-light rounded-bottom text-center p-4">
+                <h5 class="m-0">Self Video Upload</h5>
+                <button name="button" value="OK" class="form-control" type="button" id="cameraButton">Open Camera</button>
+            </div>
+            <video id="cameraFeed" autoplay="true"></video>
+        </div>
+        <div class="col-md-4 service-item wow zoomIn" data-wow-delay="1.2s">
+            <div class="rounded-top overflow-hidden" style="height: 200px; width: 300px;">
+                <img class="img-fluid" src="static/img/Untitled design.png" alt="" style="max-height: 100%; max-width: 100%;">
+            </div>
+            <div class="position-relative bg-light rounded-bottom text-center p-4">
+                <h5 class="m-0">Mock Test</h5>
+                <button name="button" value="OK" class="form-control" type="button" onclick="hello()"><a href="test" ><i>Test Here</i></a></button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container text-center"> <!-- Center the content within a container -->
+    <div class="row g-5">
+    </div>
+</div>
+</div>
+</div>
+<!-- Service End -->
+<script>
+    const cameraButton = document.getElementById("cameraButton");
+    const cameraFeed = document.getElementById("cameraFeed");
+
+    cameraButton.addEventListener('click', async()=>{
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({video:true});
+            cameraFeed.srcObject = stream;
+        } catch (error){
+            console.error("Error accessing the camera:", error);
+        }
+    });
+</script>
+{% endblock body %}

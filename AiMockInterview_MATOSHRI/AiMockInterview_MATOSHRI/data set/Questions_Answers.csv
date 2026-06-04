@@ -1,0 +1,47 @@
+Question,Answer,Category
+What is Python?,"Python is a high-level, interpreted programming language.",Python Developer
+What is a list in Python?,"A list is a mutable, ordered collection of elements in Python.",Python Developer
+What is the output of 2 + 2 in Python?,The output is 4.,Python Developer
+How do you define a function in Python?,Use the 'def' keyword followed by the function name and parentheses.,PythonDeveloper
+What is a tuple in Python?,"A tuple is an immutable, ordered collection of elements in Python.",Python Developer
+Is Python a compiled language or an interpreted language?,"Actually, Python is a partially compiled language and partially interpreted language.",Python Developer
+What does the ‘#’ symbol do in Python?,used to comment on everything that comes after on the line.,Python Developer
+What is a lambda function?,"A lambda function is an anonymous function. This function can have any number of parameters but, can have just one statement.",Python Developer
+What is a pass in Python?,"Pass means performing no operation or in other words, it is a placeholder in the compound statement, where there should be a blank left and nothing has to be written there.",Python Developer
+What is Scope in Python?,The location where we can find a variable and also access it if required is called the scope of a variable.,Python Developer
+,,
+,,
+What is Java?,"Java is a high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible.",Java Developer
+What are the main features of Java?,"Some features include Object-Oriented, Platform Independence, Robustness, Security, and Multithreading.",Java Developer
+What is the JDK?,The Java Development Kit (JDK) is a software development environment used for developing Java applications and applets.,Java Developer
+"What is the difference between JDK, JRE, and JVM?","JDK is for development, JRE is for running Java programs, and JVM is the engine that executes Java bytecode.",Java Developer
+What is a Class in Java?,A class is a blueprint from which individual objects are created. It contains methods and variables.,Java Developer
+What do you understand by Java virtual machine?,Java Virtual Machine is a virtual machine that enables the computer to run the Java program.,Java Developer
+What if I write static public void instead of public static void?,The program compiles and runs correctly because the order of specifiers doesn't matter in Java.,Java Developer
+What is the default value of the local variables?,"The local variables are not initialized to any default value, neither primitives nor object references.",Java Developer
+What is an object?,The Object is the real-time entity having some state and behavior.,Java Developer
+What is the constructor?,The constructor can be defined as the special type of method that is used to initialize the state of an object.,Java Developer
+,,
+,,
+What is Bootstrap?,"Bootstrap is a front-end framework for designing responsive and mobile-first web pages. It includes CSS and JavaScript components like grids, buttons, and modals.",Web Designing
+What are media queries in CSS?,"Media queries allow CSS to apply styles based on the device's screen size, resolution, or other characteristics.",Web Designing
+What is the difference between HTML and XHTML?,"HTML is not case-sensitive, while XHTML is case-sensitive and stricter with syntax rules. XHTML requires proper nesting of elements, closing all tags, and using lowercase for tag names.",Web Designing
+What is CSS?,"CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation, formatting, and layout of HTML elements on a web page.",Web Designing
+What is JavaScript?,"JavaScript is a lightweight, interpreted programming language that adds interactivity and dynamic behavior to web pages.",Web Designing
+What is the Document Object Model (DOM)?,"The DOM is a programming interface for HTML and XML documents. It represents the page so that programs can manipulate its structure, style, and content.",Web Designing
+What is an API?,An API (Application Programming Interface) is a set of rules that allows software programs to communicate with each other.,Web Designing
+What are the different types of CSS?,"inline css, internal css, external css",Web Designing
+What are the HTTP methods used in RESTful APIs?,"get, post, put, delete",Web Designing
+What is the difference between id and class in HTML?,id is a unique identifier for a single element.class is a reusable identifier that can be applied to multiple elements.,Web Designing
+,,
+,,
+What is software testing?,"Software testing is the process of evaluating a software application to identify bugs, verify its functionality, and ensure it meets the specified requirements.",Testing
+What are the main goals of testing?,"To ensure software quality, identify defects, validate functionality, improve user satisfaction, and ensure reliability.",Testing
+What is a defect?,A defect is a discrepancy between the actual and expected results in the software application.,Testing
+What are the types of software testing?,Manual testing and automated testing.,Testing
+What is black-box testing?,A testing method where the tester evaluates the functionality of the application without knowledge of the internal code structure.,Testing
+What is white-box testing?,A testing method where the tester has knowledge of the internal code and logic.,Testing
+What is the purpose of test cases?,To define the conditions and steps to verify that a software feature is working as expected.,Testing
+What is regression testing?,Testing conducted to ensure that new changes or fixes do not adversely affect existing functionality.,Testing
+What is unit testing?,Testing individual components or modules of the software in isolation.,Testing
+What is a test plan?,"A document outlining the testing scope, approach, resources, and schedule for the testing process.",Testing

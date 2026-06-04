@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-xl-11 col-lg-12 wow slideInUp m-auto" data-wow-delay="0.3s">
+                <div class="section-title mt-5">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">Final Result</h5>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <label>Name : </label>
+                            <h3>{{final_result.user_first_name}} {{final_result.user_last_name}}</h3>
+                        </div>
+                        <div class="col-12">
+                            <label>Email : </label>
+                            <h3>{{final_result.user_email}}</h3>
+                        </div>
+                        <div class="col-12">
+                            <label>As per your Resume you may Eligible for : </label>
+                            <h3>{{final_result.cv_prediction}}</h3>
+                        </div>
+                        <div class="col-12">
+                            <label>As per your Self Introduction you may Eligible for : </label>
+                            <h3>{{final_result.intro_prediction}}</h3>
+                        </div>
+                        <div class="col-12">
+                            <label>Overall percentage of your Technical Interview :  </label>
+                            <h3>{{overall_percentage}}%</h3> <!-- Display overall_percentage -->
+                        </div>
+                        <div class="col-12">
+                            <label>Mock Test Score : </label>
+                            <h3>{{test_score_percentage  }} / 100</h3>
+                        </div>
+                        
+
+                        <div class="col-12 text-center">
+                            <a class="btn btn-primary py-3 mx-2" href="dashboard">Go to Dashboard</a>
+                            <a class="btn btn-dark py-3" href="{{ pdf_file_path }}" target="_blank">See your Resume</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-12">
+                            <label>Resume Level : </label>
+                            <h3>{{final_result.user_level}}</h3>
+                        </div>
+                        <div class="col-12">
+                            <label>Skills you have : </label><br>
+                            
+                            {% if skills %}
+                                {% for skill in skills %}
+                                <button class="btn btn-success m-1">{{skill}} </button>
+                                {% endfor %}
+                            {% else %}
+                            <h3>Skills Not Identified</h3>
+                            {% endif %}
+                                
+                            
+                        </div>
+                        <div class="col-12">
+                            <label>Recommended Skills for You : </label>,<br>
+                            {% for rec in rec_skills %}
+                            <button class="btn btn-outline-danger m-1">{{rec}} </button>
+                            {% endfor %}
+                        </div>
+                        <div class="col-12">
+                            <label>Resume Score : </label>
+                            <h3>{{final_result.resume_score}} / 100</h3>
+                        </div>
+                        <div class="col-12">
+                            <canvas id="resumeChart" width="200" height="200"></canvas>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Assuming you have the resume score data available in the final_result.resume_score variable
+    var resumeScore = {{final_result.resume_score}}; // Retrieve the resume score from your backend
+
+    // Data for the pie chart
+    var data = {
+        labels: ['Resume Score', 'Total Score'],
+        datasets: [{
+            data: [resumeScore, 100],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)', // Red color for resume score
+                'rgba(54, 162, 235, 0.5)' // Blue color for remaining score
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // Configuration options
+    var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            position: 'top',
+        }
+    };
+
+    // Get the context of the canvas element
+    var ctx = document.getElementById('resumeChart').getContext('2d');
+
+    // Create the pie chart
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: options
+    });
+</script>
+{% endblock body%}

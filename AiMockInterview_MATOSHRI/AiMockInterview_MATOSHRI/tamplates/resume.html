@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!-- Service Start -->
+<div class="container text-center"> <!-- Center the content within a container -->
+    <div class="section-title mb-5">
+        <h5 class="position-relative d-inline-block text-primary text-uppercase mt-5">UPLOAD RESUME</h5>
+    </div>
+    <div class="container">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-5 m-auto justify-content-center">
+                <div class="col-md-4 service-item wow zoomIn" data-wow-delay="0.6s">
+                    <div class="position-relative bg-light rounded-bottom text-center p-4">
+                        <h5 class="m-3">Upload Your Resume<span class="text-danger">*</span></h5>
+                        <p>Upload Only PDF File.</p>
+                        <input type="file" id="resumeInput" name="user_resume" id="user_resume" class="form-control" accept="application/pdf"
+                            onchange="displayFile()" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 m-auto justify-content-center">
+                <div class="col-md-8 service-item wow zoomIn" data-wow-delay="0.6s">
+                    <div class="container text-center my-3" id="uploadedFileDiv" style="display: none;">
+                        <h5>Uploaded File</h5>
+                        <div id="pdfViewerContainer"></div>
+                    </div>
+                    <div class="row col-lg-5 mb-5 justify-content-center mx-auto">
+                        <div class="col-lg-6">
+                            <a class="btn btn-danger my-5" href="dashboard" disabled>Dashboard</a>
+                        </div>
+                        <div class="col-lg-6">
+                            <button id="uploadBtn" class="btn btn-primary my-5" type="submit" disabled>Move to
+                                Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- New div to display uploaded file -->
+
+<script>
+    // Function to display the selected file in the new div
+    function displayFile() {
+        const resumeInput = document.getElementById("resumeInput");
+        const uploadedFileDiv = document.getElementById("uploadedFileDiv");
+        const pdfViewerContainer = document.getElementById("pdfViewerContainer");
+        const uploadBtn = document.getElementById("uploadBtn");
+
+        // Check if a file is selected
+        if (resumeInput.files.length > 0) {
+            const file = resumeInput.files[0];
+
+            // Create an iframe to display the PDF
+            const pdfViewer = document.createElement("iframe");
+            pdfViewer.src = URL.createObjectURL(file);
+            pdfViewer.width = "100%";
+            pdfViewer.height = "600px"; // Set the height as per your requirement
+            pdfViewer.style.border = "none";
+
+            // Clear any previous content
+            pdfViewerContainer.innerHTML = "";
+
+            // Append the PDF viewer to the container
+            pdfViewerContainer.appendChild(pdfViewer);
+
+            // Show the new div
+            uploadedFileDiv.style.display = "block";
+
+            // Enable the upload button
+            uploadBtn.disabled = false;
+        } else {
+            // If no file is selected, hide the new div
+            uploadedFileDiv.style.display = "none";
+
+            // Disable the upload button
+            uploadBtn.disabled = true;
+        }
+    }
+</script>
+
+{% endblock body %}

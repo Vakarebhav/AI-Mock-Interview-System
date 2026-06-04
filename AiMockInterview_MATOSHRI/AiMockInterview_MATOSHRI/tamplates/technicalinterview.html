@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container text-center">
+    <div class="section-title mb-5">
+        <h5 class="position-relative d-inline-block text-primary text-uppercase mt-5">Technical Interview</h5>
+    </div>
+
+    <!-- Displaying the predicted category -->
+    {% if predicted_category %}
+<div class="row g-4 justify-content-center mb-5">
+    <div class="col-md-6">
+        <h5 class="text-primary text-center">Predicted Category: {{ predicted_category }}</h5>
+    </div>
+</div>
+{% endif %}
+
+    <!-- Main Content Section -->
+    <div class="row g-5 justify-content-center d-flex align-items-center" style="height: 20vh;">
+        <div class="col-md-7" style="margin-left: 18%; /* Increased this value to move the box further to the right */">
+            <!-- Displaying the questions -->
+            {% if questions_to_ask %}
+                <div id="questionContainer" class="container">
+                    {% for question in questions_to_ask %}
+                        <div class="row g-4 justify-content-center question-block no-hover-effect" id="question{{ forloop.counter }}" style="display: none;">
+                            <div class="col-md-8 service-item">
+                                <div class="recording-box">
+                                    <h5 class="text-secondary text-center">{{ question.question }}</h5>
+    
+                                    <!-- Combined video and audio recording section -->
+                                    <div class="position-relative text-center mt-3" id="recordingContainer{{ forloop.counter }}">
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                            <h5 class="mb-3">Start Recording</h5>
+                                            <button type="submit" class="btn btn-primary" onclick="startRecording({{ forloop.counter }})">Start Video and Audio</button>
+                                        </form>
+                                        <br>
+    
+                                        <!-- Video recording display -->
+                                        <video id="recordedVideo{{ forloop.counter }}" autoplay muted style="display:none; width: 250px; height: 250px; object-fit: cover;margin-left:20px;"></video>
+                                        <!-- Audio recording timer display -->
+                                        <p id="audioTimer{{ forloop.counter }}" class="text-danger mt-2" style="display:none;"></p>
+                                        <!-- Video recording timer display -->
+                                        <p id="timer{{ forloop.counter }}" class="text-danger mt-2" style="display:none;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center mt-4">
+                    <p class="text-secondary">No questions available for this category.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+<script>
+    let currentQuestion = 1; // Track the current question (starting from 1)
+    const questionsCount = {{ questions_to_ask|length }}; // Total number of questions
+    let answeredQuestions = 0; // Track how many questions have been answered
+
+    // Function to show the next question
+    function showNextQuestion() {
+        if (currentQuestion <= questionsCount) {
+            const questionBlock = document.getElementById('question' + currentQuestion);
+            questionBlock.style.display = 'block';
+            currentQuestion++;
+        } else {
+            // Redirect to a results page or show final results
+            alert('You have completed all the questions.');
+        }
+    }
+    // Function to start video and audio recording and show the next question after a delay
+    function startRecording(questionIndex) {
+        const videoElement = document.getElementById('recordedVideo' + questionIndex);
+        const audioTimerElement = document.getElementById('audioTimer' + questionIndex);
+        const timerElement = document.getElementById('timer' + questionIndex);
+        const questionBlock = document.getElementById('question' + questionIndex);
+        const recordingContainer = document.getElementById('recordingContainer' + questionIndex);
+
+        // Show the appropriate containers and start video and audio recording
+        videoElement.style.display = "block";  // Show video element
+        audioTimerElement.style.display = "block"; // Show audio timer
+        startVideoRecording(questionIndex, videoElement, timerElement); // Start video recording
+        startAudioRecording(audioTimerElement); // Start audio recording
+
+        // Fix the screen size for the recording container
+        recordingContainer.style.height = '400px'; // Fixed height for recording container
+
+        // Hide current question after recording
+        setTimeout(function () {
+            questionBlock.style.display = 'none'; // Hide current question
+            answeredQuestions++; // Increment the answered questions count
+            showNextQuestion(); // Show next question
+
+            // Check if all questions have been answered
+            if (answeredQuestions === questionsCount) {
+                window.location.href = "{% url 'user_test' %}"; // Redirect after all questions are answered
+            }
+        }, 5000); // Wait 5 seconds before moving to the next question
+    }
+
+    // Function to start video recording
+    function startVideoRecording(questionIndex, videoElement, timerElement) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                videoElement.srcObject = stream; // Show the stream in the video element
+                startTimer(60, timerElement); // Start the timer (60 seconds)
+            })
+            .catch(function (err) {
+                console.error('Error accessing media devices', err);
+            });
+    }
+
+    // Function to start audio recording
+    function startAudioRecording(audioTimerElement) {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(function (stream) {
+                startTimer(60, audioTimerElement); // Start the timer (60 seconds)
+            })
+            .catch(function (err) {
+                console.error('Error accessing audio devices', err);
+            });
+    }
+
+    // Function to start the timer for both video and audio recording
+    function startTimer(duration, timerElement) {
+        let timer = duration;
+        let minutes, seconds;
+        const interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerElement.innerText = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+            }
+        }, 1000);
+    }
+
+    // Show the first question when the page loads
+    showNextQuestion();
+</script>
+
+<!-- Additional Custom CSS -->
+<style>
+    .recording-box {
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .question-block {
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+</style>
+
+{% endblock body %}
+
+
