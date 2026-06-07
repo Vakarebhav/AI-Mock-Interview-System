@@ -189,15 +189,6 @@ http://127.0.0.1:8000/
 
 ---
 
-## 👨‍💻 Author
-
-**Bhavesh Vakare**  
-CDAC – Mobile Computing
-
-GitHub: https://github.com/your-github-username
-
----
-
 ## 📄 License
 
 This project is developed for educational and placement preparation purposes.
